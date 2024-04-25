@@ -1,9 +1,21 @@
+import json
+
+
 def get_data(file1, file2):
-    data = {}
+    data1 = {}
+    data2 = {}
 
     if file1.endswith('.json'):
-        data['file1'] = {'type': 'json'}
+        with open(file1, 'r') as file1:
+            data1 = json.load(file1)
 
     if file2.endswith('.json'):
-        data['file2'] = {'type': 'json'}
-    pass
+        with open(file2, 'r') as file2:
+            data2 = json.load(file2)
+
+    else:
+        return 'Invalid file format'
+
+
+    return data1, data2
+
