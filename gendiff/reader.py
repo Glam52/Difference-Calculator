@@ -16,6 +16,4 @@ def get_data(file1, file2):
     else:
         return 'Invalid file format'
 
-
     return data1, data2
-
