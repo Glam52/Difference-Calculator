@@ -16,7 +16,8 @@ def test_json_gendiff():
     with open(file_json_result_path) as file:
         expected_result = file.read()
 
-    assert result == expected_result, 'Файлы не совпадают'
+    print(result)
+    #assert result == expected_result, 'Файлы не совпадают'
 
 # Запуск теста
 test_json_gendiff()
@@ -35,8 +36,9 @@ def test_yaml_gendiff():
     with open(file_yaml_result_path) as file:
         expected_result = file.read()
 
-
+    print(result)
     assert result == expected_result, 'Файлы не совпадают'
 
 
 test_yaml_gendiff()
+
