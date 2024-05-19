@@ -3,10 +3,10 @@ import os
 
 
 file1_json_path = os.path.join(
-    os.path.dirname(__file__), "fixtures", "file3.json"
+    os.path.dirname(__file__), "fixtures", "file1.json"
 )
 file2_json_path = os.path.join(
-    os.path.dirname(__file__), "fixtures", "file4.json"
+    os.path.dirname(__file__), "fixtures", "file2.json"
 )
 
 
