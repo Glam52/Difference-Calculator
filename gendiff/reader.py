@@ -16,7 +16,5 @@ def get_data(file) -> dict or str:
     elif file.endswith(".yaml"):
         with open(file, "r") as f:
             data = yaml.safe_load(f)
-    else:
-        return {"Invalid file format"}
 
     return data

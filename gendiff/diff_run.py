@@ -1,6 +1,6 @@
 from gendiff.reader import get_data
 from gendiff.comparisator import compare_dicts
-from gendiff.stylish import stylish
+from gendiff.formats.stylish import stylish
 from typing import IO
 
 

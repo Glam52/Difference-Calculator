@@ -21,9 +21,10 @@ def format_value(value, depth: int) -> str:
     return str(value)
 
 
-def stylish(compared_result: list[dict], depth: int=0) -> str:
+def stylish(compared_result: list[dict], depth: int = 0) -> str:
     """
-    The function takes the result of the comparison and returns the difference in the edited text
+    The function takes the result of the comparison and
+     returns the difference in the edited text
     :param compared_result: compared_result from comparisator.py
     :param depth: indentation depth
     :return: formatted difference

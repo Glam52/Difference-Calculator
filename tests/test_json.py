@@ -1,7 +1,7 @@
 import os
 from gendiff.comparisator import compare_dicts
 from gendiff.reader import get_data
-from gendiff.json import convert_to_json
+from gendiff.formats.json import convert_to_json
 
 file1_path = os.path.join(os.path.dirname(__file__), "fixtures", "file1.json")
 file2_path = os.path.join(os.path.dirname(__file__), "fixtures", "file2.json")
