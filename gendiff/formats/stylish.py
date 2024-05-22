@@ -21,6 +21,34 @@ def format_value(value, depth: int) -> str:
     return str(value)
 
 
+def format_untouched(item, depth: int) -> str:
+    key = item["key"]
+    return f"{'    ' * depth}    {key}: {format_value(item['value'], depth)}"
+
+
+def format_nested(item, depth: int) -> str:
+    key = item["key"]
+    return f"{'    ' * depth}    {key}: {stylish(item['children'], depth + 1)}"
+
+
+def format_deleted(item, depth: int) -> str:
+    key = item["key"]
+    return f"{'    ' * depth}  - {key}: {format_value(item['value'], depth)}"
+
+
+def format_new(item, depth: int) -> str:
+    key = item["key"]
+    return f"{'    ' * depth}  + {key}: {format_value(item['value'], depth)}"
+
+
+def format_modified(item, depth: int) -> str:
+    key = item["key"]
+    return (
+        f"{'    ' * depth}  - {key}: {format_value(item['value1'], depth)}\n"
+        f"{'    ' * depth}  + {key}: {format_value(item['value2'], depth)}"
+    )
+
+
 def stylish(compared_result: list[dict], depth: int = 0) -> str:
     """
     The function takes the result of the comparison and
@@ -29,35 +57,16 @@ def stylish(compared_result: list[dict], depth: int = 0) -> str:
     :param depth: indentation depth
     :return: formatted difference
     """
-    indent = "    " * depth
     lines = ["{"]
     for item in compared_result:
-        key = item["key"]
-        if item["type"] == "untouched":
-            lines.append(
-                f"{indent}    {key}: {format_value(item['value'], depth)}"
-            )
-        elif item["type"] == "nested":
-            lines.append(
-                f"{indent}    {key}: {stylish(item['children'], depth + 1)}"
-            )
-        elif item["type"] == "deleted":
-            lines.append(
-                f"{indent}  - {key}: {format_value(item['value'], depth)}"
-            )
-        elif item["type"] == "new":
-            lines.append(
-                f"{indent}  + {key}: {format_value(item['value'], depth)}"
-            )
-        elif item["type"] == "modified":
-            lines.append(
-                f"{indent}  - {key}: {format_value(item['value1'], depth)}"
-            )
-            lines.append(
-                f"{indent}  + {key}: {format_value(item['value2'], depth)}"
-            )
-    lines.append(indent + "}")
-
-    formatted_result: str = "\n".join(lines)
-
-    return formatted_result
+        formatter = {
+            "untouched": format_untouched,
+            "nested": format_nested,
+            "deleted": format_deleted,
+            "new": format_new,
+            "modified": format_modified,
+        }.get(item["type"])
+        if formatter:
+            lines.append(formatter(item, depth))
+    lines.append("    " * depth + "}")
+    return "\n".join(lines)

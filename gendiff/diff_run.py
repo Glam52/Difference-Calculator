@@ -1,10 +1,12 @@
 from gendiff.reader import get_data
 from gendiff.comparisator import compare_dicts
 from gendiff.formats.stylish import stylish
+from gendiff.formats.json import convert_to_json
+from gendiff.formats.plain import create_plain_text
 from typing import IO
 
 
-def gendiff(file1: IO, file2: IO) -> str:
+def gendiff(file1: IO, file2: IO, formatter='stylish') -> str:
     """
     Compares 2 files and returns the edited
      text of the comparison of these files
@@ -20,6 +22,11 @@ def gendiff(file1: IO, file2: IO) -> str:
     compare_data = compare_dicts(data1, data2)
 
     # Variable into which the edited text is written
-    text_final: str = stylish(compare_data)
+    if formatter == 'stylish':
+        text_final: str = stylish(compare_data)
+    if formatter == 'json':
+        text_final: str = convert_to_json(compare_data)
+    if formatter == 'plain':
+        text_final: str = create_plain_text(compare_data)
 
     return text_final
