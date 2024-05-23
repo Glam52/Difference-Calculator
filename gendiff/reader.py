@@ -2,7 +2,7 @@ import json
 import yaml
 
 
-def get_data(file) -> dict or str:
+def get_data(file) -> dict:
     """
     Reads and load data from file and returns it as a dictionary
     :param file: .json or .yaml file

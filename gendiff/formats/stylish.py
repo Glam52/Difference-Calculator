@@ -21,27 +21,27 @@ def format_value(value, depth: int) -> str:
     return str(value)
 
 
-def format_untouched(item, depth: int) -> str:
+def format_untouched_stylish(item, depth: int) -> str:
     key = item["key"]
     return f"{'    ' * depth}    {key}: {format_value(item['value'], depth)}"
 
 
-def format_nested(item, depth: int) -> str:
+def format_nested_stylish(item, depth: int) -> str:
     key = item["key"]
     return f"{'    ' * depth}    {key}: {stylish(item['children'], depth + 1)}"
 
 
-def format_deleted(item, depth: int) -> str:
+def format_deleted_stylish(item, depth: int) -> str:
     key = item["key"]
     return f"{'    ' * depth}  - {key}: {format_value(item['value'], depth)}"
 
 
-def format_new(item, depth: int) -> str:
+def format_new_stylish(item, depth: int) -> str:
     key = item["key"]
     return f"{'    ' * depth}  + {key}: {format_value(item['value'], depth)}"
 
 
-def format_modified(item, depth: int) -> str:
+def format_modified_stylish(item, depth: int) -> str:
     key = item["key"]
     return (
         f"{'    ' * depth}  - {key}: {format_value(item['value1'], depth)}\n"
@@ -60,13 +60,14 @@ def stylish(compared_result: list[dict], depth: int = 0) -> str:
     lines = ["{"]
     for item in compared_result:
         formatter = {
-            "untouched": format_untouched,
-            "nested": format_nested,
-            "deleted": format_deleted,
-            "new": format_new,
-            "modified": format_modified,
+            "untouched": format_untouched_stylish,
+            "nested": format_nested_stylish,
+            "deleted": format_deleted_stylish,
+            "new": format_new_stylish,
+            "modified": format_modified_stylish,
         }.get(item["type"])
         if formatter:
             lines.append(formatter(item, depth))
     lines.append("    " * depth + "}")
+
     return "\n".join(lines)
