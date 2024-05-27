@@ -6,6 +6,7 @@ authors = ["Glam52 <gla_max@outlook.com>"]
 readme = "README.md"
 packages = [
   { include = "gendiff" },
+  { include = "tests"}
 ]
 
 
