@@ -43,7 +43,7 @@
                         "children": [
                             {
                                 "key": "wow",
-                                "value1": "",
+                                "value1": "abab",
                                 "value2": "so much",
                                 "type": "modified"
                             }
