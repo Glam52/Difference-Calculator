@@ -1,4 +1,6 @@
 from gendiff.cli import gendiff
+
+
 def main():
     gendiff()
 
