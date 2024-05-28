@@ -1,6 +1,6 @@
 def format_value(value):
     if isinstance(value, dict):
-        return "[complex value1"
+        return "[complex value]"
     elif isinstance(value, bool):
         return str(value).lower()
     elif isinstance(value, str):
