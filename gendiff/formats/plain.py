@@ -3,12 +3,13 @@ def format_value(value):
         return "[complex value]"
     elif isinstance(value, bool):
         return str(value).lower()
-    elif isinstance(value, int):
-        if value == 0:
-            return "None"
+    elif isinstance(value, str):
         return f"'{value}'"
+    elif isinstance(value, int):
+        return str(f'None')
     elif value is None:
         return "null"
+
 
 
 def plain(compared_result: list[dict], parent_key: str = "") -> str:
