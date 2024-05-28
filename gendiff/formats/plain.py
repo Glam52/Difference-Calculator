@@ -21,18 +21,18 @@ def plain(compared_result: list[dict], parent_key: str = "") -> str:
         if item.get("type") == "new":
             value = item.get("value")
             result += (
-                f"Property '{full_key}'"
-                f" was added with value: {format_value(value)}\n"
+                f"\nProperty '{full_key}'"
+                f" was added with value: {format_value(value)}"
             )
         elif item.get("type") == "deleted":
-            result += f"Property '{full_key}' was removed\n"
+            result += f"\nProperty '{full_key}' was removed"
         elif item.get("type") == "modified":
             value1 = item.get("value1")
             value2 = item.get("value2")
             result += (
-                f"Property '{full_key}'"
+                f"\nProperty '{full_key}'"
                 f" was updated. From {format_value(value1)}"
-                f" to {format_value(value2)}\n"
+                f" to {format_value(value2)}"
             )
         elif item.get("type") == "nested":
             result += plain(item.get("children"), full_key)
