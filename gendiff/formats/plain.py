@@ -38,4 +38,3 @@ def plain(compared_result: list[dict], parent_key: str = "") -> str:
             result.append(plain(item.get("children"), full_key))
 
     return "\n".join(result)
-
