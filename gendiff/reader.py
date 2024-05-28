@@ -8,6 +8,8 @@ def get_data(file) -> dict:
     :param file: .json or .yaml file
     :return: dictionary
     """
+
+    data = "Incorrect data format"
     # Processing .json files
     if file.endswith(".json"):
         with open(file, "r") as f:
