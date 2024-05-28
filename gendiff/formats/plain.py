@@ -4,12 +4,7 @@ def format_value(value):
     elif isinstance(value, bool):
         return str(value).lower()
     elif isinstance(value, str):
-        if value == "0":
-            return 'None'
         return f"'{value}'"
-    elif isinstance(value, int):
-        if value == 0:
-            return "None"
     elif value is None:
         return "null"
     return value
@@ -32,6 +27,10 @@ def plain(compared_result: list[dict], parent_key: str = "") -> str:
         elif item.get("type") == "modified":
             value1 = item.get("value1")
             value2 = item.get("value2")
+            if value1 == 0:
+                value1 = "None"
+            if value2 == 0:
+                value2 = "None"
             result += (
                 f"Property '{full_key}'"
                 f" was updated. From {format_value(value1)}"
