@@ -1,4 +1,4 @@
-from gendiff.diff_run import gendiff
+from gendiff.diff_run import diff_run
 import os
 
 
@@ -10,7 +10,7 @@ def test_stylish_json():
         "r",
     ).read()
 
-    result = gendiff(file1, file2)
+    result = diff_run(file1, file2)
     with open("test_st", "w") as file:
         file.write(result)
     assert result == final_file
@@ -23,7 +23,7 @@ def test_stylish_yaml():
         os.path.join(os.path.dirname(__file__), "fixtures", "result_yaml"), "r"
     ).read()
 
-    result = gendiff(file1, file2, "stylish")
+    result = diff_run(file1, file2, "stylish")
     with open("test_st", "w") as file:
         file.write(result)
     assert result == final_file
@@ -35,7 +35,7 @@ def test_plain():
     final_file = open(
         os.path.join(os.path.dirname(__file__), "fixtures", "result_plain"), "r"
     ).read()
-    result = gendiff(file1, file2, "plain")
+    result = diff_run(file1, file2, "plain")
     with open("test_st", "w") as file:
         file.write(result)
     assert result == final_file
@@ -47,7 +47,7 @@ def test_json():
     final_file = open(
         os.path.join(os.path.dirname(__file__), "fixtures", "result_json"), "r"
     ).read()
-    result = gendiff(file1, file2, "json")
+    result = diff_run(file1, file2, "json")
     with open("test_st", "w") as file:
         file.write(result)
     assert result == final_file
