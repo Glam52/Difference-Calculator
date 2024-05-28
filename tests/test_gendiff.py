@@ -1,4 +1,4 @@
-from gendiff.diff_run import diff_run
+from gendiff.gendiff import diff_run
 import os
 
 

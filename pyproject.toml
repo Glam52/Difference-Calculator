@@ -29,7 +29,7 @@ build-backend = "poetry.core.masonry.api"
 
 
 [tool.poetry.scripts]
-gendiff ="gendiff.scripts.gener_diff:main"
+gendiff ="gendiff.scripts.gendiff_script:main"
 
 [tool.black]
 line-length = 80
