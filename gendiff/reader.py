@@ -15,7 +15,7 @@ def get_data(file) -> dict:
         with open(file, "r") as f:
             data = json.load(f)
     # Processing .yaml files
-    elif file.endswith(".yaml"):
+    elif file.endswith(".yaml") or file.endswith(".yml"):
         with open(file, "r") as f:
             data = yaml.safe_load(f)
 
