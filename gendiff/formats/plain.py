@@ -7,10 +7,9 @@ def format_value(value):
         return f"'{value}'"
     elif isinstance(value, int):
         if value == 0:
-            return str(f'None')
+            return "None"
     elif value is None:
         return "null"
-
 
 
 def plain(compared_result: list[dict], parent_key: str = "") -> str:
