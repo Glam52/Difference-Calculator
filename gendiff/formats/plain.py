@@ -1,6 +1,6 @@
 def format_value(value):
     if isinstance(value, dict):
-        return "[1complex value1]"
+        return "[complex value1"
     elif isinstance(value, bool):
         return str(value).lower()
     elif isinstance(value, str):
@@ -8,7 +8,7 @@ def format_value(value):
     elif value is None:
         return "null"
     elif int(value) == 0:
-        return 'None'
+        return 0
     return value
 
 

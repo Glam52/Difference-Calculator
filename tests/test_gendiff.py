@@ -51,6 +51,3 @@ def test_json():
     with open("test_st", "w") as file:
         file.write(result)
     assert result == final_file
-
-
-print(test_plain())
