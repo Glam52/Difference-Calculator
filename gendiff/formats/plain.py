@@ -6,7 +6,8 @@ def format_value(value):
     elif isinstance(value, str):
         return f"'{value}'"
     elif isinstance(value, int):
-        return str(f'None')
+        if value == 0:
+            return str(f'None')
     elif value is None:
         return "null"
 
