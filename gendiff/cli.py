@@ -1,5 +1,5 @@
 import argparse
-from gendiff.diff_run import gendiff
+from gendiff.diff_run import diff_run
 
 
 # def main():
@@ -13,7 +13,7 @@ from gendiff.diff_run import gendiff
 #     )
 #     parser.parse_args(["-h"])
 #     parser.parse_args(["-f FORMAT"])
-def main():
+def gendiff():
     parser = argparse.ArgumentParser(
         description="usage: gendiff [-h] first_file second_file"
     )
@@ -27,9 +27,9 @@ def main():
     )
     args = parser.parse_args()
 
-    result = gendiff(args.first_file, args.second_file, args.format)
+    result = diff_run(args.first_file, args.second_file, args.format)
     print(result)
 
 
 if __name__ == "__main__":
-    main()
+    gendiff()

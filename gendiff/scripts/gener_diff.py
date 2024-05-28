@@ -1,5 +1,6 @@
+from gendiff.cli import gendiff
 def main():
-    pass
+    gendiff()
 
 
 if __name__ == "__main__":

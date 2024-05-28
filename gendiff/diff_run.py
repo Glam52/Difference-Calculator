@@ -6,7 +6,7 @@ from gendiff.formats.plain import plain
 from typing import IO
 
 
-def gendiff(file1: IO, file2: IO, formatter="stylish") -> str:
+def diff_run(file1: IO, file2: IO, formatter="stylish") -> str:
     """
     Compares 2 files and returns the edited
      text of the comparison of these files
