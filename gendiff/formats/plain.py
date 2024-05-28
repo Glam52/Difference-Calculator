@@ -36,6 +36,5 @@ def plain(compared_result: list[dict], parent_key: str = "") -> str:
             )
         elif item.get("type") == "nested":
             result += plain(item.get("children"), full_key)
-    result += '\n'
 
     return result
