@@ -10,6 +10,7 @@ def format_value(value):
             return "None"
     elif value is None:
         return "null"
+    return value
 
 
 def plain(compared_result: list[dict], parent_key: str = "") -> str:
