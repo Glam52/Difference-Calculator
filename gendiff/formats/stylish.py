@@ -1,9 +1,12 @@
-def format_value(value, depth: int) -> str:
+from typing import Union
+
+
+def format_value(value: Union[bool, None, str, dict], depth: int) -> str:
     """
     Auxiliary function, handles string output
     :param value: value to be formatted
     :param depth: indentation depth
-    :return: formatted value
+    :return: new formatted value for text
     """
     # depth depending on nesting
     if isinstance(value, dict):
@@ -21,27 +24,33 @@ def format_value(value, depth: int) -> str:
     return str(value)
 
 
-def format_untouched_stylish(item, depth: int) -> str:
+def format_untouched_stylish(
+    item, depth: int
+) -> str:  # format for type - untouched
     key = item["key"]
     return f"{'    ' * depth}    {key}: {format_value(item['value'], depth)}"
 
 
-def format_nested_stylish(item, depth: int) -> str:
+def format_nested_stylish(item, depth: int) -> str:  # format for type - nested
     key = item["key"]
     return f"{'    ' * depth}    {key}: {stylish(item['children'], depth + 1)}"
 
 
-def format_deleted_stylish(item, depth: int) -> str:
+def format_deleted_stylish(
+    item, depth: int
+) -> str:  # format for type - deleted
     key = item["key"]
     return f"{'    ' * depth}  - {key}: {format_value(item['value'], depth)}"
 
 
-def format_new_stylish(item, depth: int) -> str:
+def format_new_stylish(item, depth: int) -> str:  # format for type - new
     key = item["key"]
     return f"{'    ' * depth}  + {key}: {format_value(item['value'], depth)}"
 
 
-def format_modified_stylish(item, depth: int) -> str:
+def format_modified_stylish(
+    item, depth: int
+) -> str:  # format for type - modified
     key = item["key"]
     return (
         f"{'    ' * depth}  - {key}: {format_value(item['value1'], depth)}\n"
@@ -55,7 +64,7 @@ def stylish(compared_result: list[dict], depth: int = 0) -> str:
      returns the difference in the edited text
     :param compared_result: compared_result from comparisator.py
     :param depth: indentation depth
-    :return: formatted difference
+    :return: recursive comparison format
     """
     lines = ["{"]
     for item in compared_result:
