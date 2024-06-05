@@ -30,6 +30,5 @@ def test_generate_diff(file1, file2, expected_file, style):
     ).read()
 
     result = generate_diff(file1_path, file2_path, style)
-    with open("test_st", "w") as file:
-        file.write(result)
+
     assert result == expected_result

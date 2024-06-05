@@ -3,10 +3,9 @@ from gendiff.comparisator import compare_dicts
 from gendiff.formats.stylish import stylish
 from gendiff.formats.json import convert_to_json
 from gendiff.formats.plain import plain
-from typing import IO
 
 
-def generate_diff(file1: IO, file2: IO, formatter="stylish") -> str:
+def generate_diff(file1: str, file2: str, formatter="stylish") -> str:
     """
     Compares 2 files and returns the edited
      text of the comparison of these files

@@ -9,7 +9,6 @@ def get_data(file: str) -> dict:
     :return: dictionary
     """
 
-    data = "Incorrect data format"
     # Processing .json files
     if file.endswith(".json"):
         with open(file, "r") as f:
@@ -18,5 +17,7 @@ def get_data(file: str) -> dict:
     elif file.endswith(".yaml") or file.endswith(".yml"):
         with open(file, "r") as f:
             data = yaml.safe_load(f)
+    else:
+        raise ValueError("Invalid file format")
 
     return data
